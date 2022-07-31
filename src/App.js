@@ -1,24 +1,64 @@
-import logo from './logo.svg';
-import './App.css';
+// import logo from './logo.svg';
+import "./App.css";
+// import Header from "./MyComponents/Header";
+// import { Todos } from "./MyComponents/Todos";
+// import { Footer } from "./MyComponents/Footer";
+// import { AddTodo } from "./MyComponents/AddTodo";
+import React, { useState, createContext } from "react";
+// import Practice from "./Practice";
+// import Skills from "./Skills";
+import LoggedinContent from "./LoggedinContent";
+import LoginForm from "./LoginForm";
+// import LoginForm2 from "./LoginForm2";
+// import SignUp from "./SignUp";
 
 function App() {
+  // const context = createContext();
+
+  // const [Admin, setAdmin] = useState({ name: "Rishab", password: "123" });
+  const [Admin, setAdmin] = useState({
+    name: localStorage.getItem("Name"),
+    password: localStorage.getItem("Password"),
+  });
+  // const [User, setUser] = useState({ name: "", password: "" });
+  const [name, setname] = useState("");
+  const [password, setpassword] = useState("");
+  const [Login, setLogin] = useState("false");
+  // const [SignUpstate, setSignUpstate] = useState("false");
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {/* <Header title="My Todos List" searchBar={false} />
+      <AddTodo addTodo={addTodo} />
+      <Todos todos={todos} onDelete={onDelete} /> */}
+      {/* <Footer /> */}
+      {/* <Practice />
+      <Skills /> */}
+      {/* <context.Provider> */}
+      {/* <Router> */}
+
+      <div>
+        {name === Admin.name &&
+        password === Admin.password &&
+        Login === "true" ? (
+          <>
+            <LoggedinContent />
+          </>
+        ) : (
+          <>
+            <LoginForm
+              password={{ password, setpassword }}
+              name={{ name, setname }}
+              login={{ Login, setLogin }}
+              // Signup={{ SignUpstate, setSignUpstate }}
+              admin={{ Admin, setAdmin }}
+            />
+          </>
+        )}
+      </div>
+
+      {/* </context.Provider> */}
+    </>
   );
 }
 
